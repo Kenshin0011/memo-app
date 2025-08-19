@@ -3,12 +3,14 @@ import { computed } from "vue";
 import { ICON_SIZES, IconSize } from "../../constants/iconSizes";
 
 const { color = "primary", size = "sm" } = defineProps<{
-  color?: "primary";
+  color?: "primary" | "white";
   size?: IconSize;
 }>();
 
 const colorClass = computed(() => {
   switch (color) {
+    case "white":
+      return "text-white";
     default:
       return "text-primary-500";
   }
