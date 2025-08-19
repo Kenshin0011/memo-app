@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import Header from "../components/Header.vue";
+import SimpleLayout from "../layouts/SimpleLayout.vue";
 </script>
 
 <template>
-  <Header />
+  <SimpleLayout>
+    
+  </SimpleLayout>
 </template>
