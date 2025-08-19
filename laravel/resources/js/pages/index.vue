@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SimpleLayout from "../layouts/SimpleLayout.vue";
-import MemoStoreCard from "../components/cards/MemoStoreCard.vue";
+import MemoStoreCard from "../features/memos/components/MemoStoreCard.vue";
 </script>
 
 <template>
