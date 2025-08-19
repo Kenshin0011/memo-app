@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import api from "../../../bootstrap";
 import BaseCard from "../../../components/cards/BaseCard.vue";
 import SvgTextHeading from "../../../components/texts/SvgTextHeading.vue";
 import PlusSvg from "../../../components/svgs/PlusSvg.vue";
@@ -8,10 +9,16 @@ import SaveButton from "../../../components/buttons/SaveButton.vue";
 
 const memo = ref("");
 
-const handleSave = () => {
-  console.log("保存ボタンがクリックされました");
-  console.log("メモの内容:", memo.value);
-  console.log("メモの文字数:", memo.value.length);
+const handleSave = async () => {
+  if (memo.value.trim() === "") return;
+
+  try {
+    await api.post("/memos", {
+      description: memo.value,
+    });
+  } catch (error) {
+    console.error("メモの保存中にエラーが発生しました:", error);
+  }
 };
 </script>
 
