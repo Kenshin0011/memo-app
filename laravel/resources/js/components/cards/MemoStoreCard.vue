@@ -6,6 +6,6 @@ import PlusSvg from "../svgs/PlusSvg.vue";
 
 <template>
   <BaseCard>
-    <SvgTextHeading :icon="PlusSvg" class="mb-4">新しいメモ</SvgTextHeading>
+    <SvgTextHeading :icon="PlusSvg" text="新しいメモ" class="mb-4" />
   </BaseCard>
 </template>
