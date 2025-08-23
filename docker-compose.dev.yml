@@ -1,0 +1,11 @@
+services:
+  storybook:
+    image: node:22
+    working_dir: /var/www/html
+    command: sh -c 'npm i && npm run storybook -- --no-open'
+    volumes:
+      - ./laravel:/var/www/html
+    ports:
+      - "6006:6006"
+    profiles:
+      - adhoc

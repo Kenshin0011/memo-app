@@ -1,6 +1,4 @@
-### ========== DEVELOPMENT COMMANDS ==========
-
-.PHONY: up down stop clear init reset destroy app-create front-create
+.PHONY: up down stop clear init reset destroy app-create front-create storybook storybook-down
 
 ## Laravelキャッシュ系
 clear:
@@ -62,3 +60,11 @@ destroy:
 	rm -rf laravel/public/hot
 	rm -rf laravel/public/storage
 	rm -f laravel/.env
+
+## Storybookのみ起動
+storybook:
+	docker compose -f docker-compose.dev.yml up -d storybook
+
+## Storybook停止
+storybook-down:
+	docker compose -f docker-compose.dev.yml down
