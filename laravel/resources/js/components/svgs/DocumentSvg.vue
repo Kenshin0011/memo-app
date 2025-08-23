@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { ICON_SIZES, IconSize } from "../../constants/iconSizes";
+import { ICON_SIZES, IconSize } from "@/constants/iconSizes.ts";
 
 const { color = "primary", size = "sm" } = defineProps<{
   color?: "primary";

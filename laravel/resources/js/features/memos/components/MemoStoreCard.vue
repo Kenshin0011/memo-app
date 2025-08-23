@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import BaseCard from "../../../components/cards/BaseCard.vue";
-import SvgTextHeading from "../../../components/texts/SvgTextHeading.vue";
-import PlusSvg from "../../../components/svgs/PlusSvg.vue";
-import TextareaForm from "../../../components/forms/TextareaForm.vue";
-import SaveButton from "../../../components/buttons/SaveButton.vue";
-import { createMemo } from "../apis/MemoRepository";
+import BaseCard from "@/components/cards/BaseCard.vue";
+import SvgTextHeading from "@/components/texts/SvgTextHeading.vue";
+import PlusSvg from "@/components/svgs/PlusSvg.vue";
+import TextareaForm from "@/components/forms/TextareaForm.vue";
+import SaveButton from "@/components/buttons/SaveButton.vue";
+import { createMemo } from "@/features/memos/apis/MemoRepository";
 
 const memo = ref<string>("");
 
