@@ -22,9 +22,12 @@ const isHovered = ref(false);
     type="button"
     :disabled="disabled"
     :aria-label="ariaLabel || '削除'"
-    class="p-2 hover:bg-red-50 rounded-lg transition-colors opacity-0 group-hover:opacity-100 cursor-pointer"
+    :class="[
+      'p-2 rounded-lg transition-colors',
+      disabled ? 'cursor-not-allowed opacity-50' : 'hover:bg-red-50 cursor-pointer',
+    ]"
     @click="$emit('click')"
-    @mouseenter="isHovered = true"
+    @mouseenter="!disabled && (isHovered = true)"
     @mouseleave="isHovered = false"
   >
     <TrashSvg size="xs" :color="isHovered ? 'danger' : 'gray'" />
