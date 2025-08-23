@@ -6,6 +6,7 @@ import PlusSvg from "@/components/svgs/PlusSvg.vue";
 import TextareaForm from "@/components/forms/TextareaForm.vue";
 import SaveButton from "@/components/buttons/SaveButton.vue";
 import { createMemo } from "@/features/memos/apis/MemoRepository";
+import { createShortcutHandler } from "@/utils/keyboardShortcuts";
 
 const memo = ref<string>("");
 
@@ -17,6 +18,10 @@ const handleSubmit = async (event: Event) => {
     memo.value = "";
   }
 };
+
+const handleKeydown = createShortcutHandler(() => {
+  handleSubmit(new Event("submit"));
+});
 </script>
 
 <template>
@@ -31,6 +36,7 @@ const handleSubmit = async (event: Event) => {
           aria-label="新しいメモの内容"
           :placeholder="`メモを入力してください...\n（Enterで保存、Shift+Enterで改行）`"
           :rows="4"
+          @keydown="handleKeydown"
         />
         <div id="memo-input-description" class="sr-only">
           メモを入力してから保存ボタンを押してください。Enterキーで保存、Shift+Enterで改行できます。
