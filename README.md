@@ -12,6 +12,7 @@
 * Tailwind CSS v3
 * Pinia
 * TypeScript
+* Storybook 9.x
 * Docker / Docker Compose
 
 ---
@@ -135,3 +136,25 @@ laravel/
 ├── .env                    # 環境変数
 └── ...
 ```
+
+---
+
+## 📖 Storybook
+
+このプロジェクトでは、UIコンポーネントの開発・テスト・ドキュメント化にStorybook 9.xを使用しています。
+
+### 🚀 Storybookの起動
+
+```bash
+# Dockerを使用
+make storybook
+```
+
+### 📚 Storybookの設定
+
+Storybookの設定ファイルは以下にあります：
+
+- `.storybook/main.ts` - メイン設定
+- `.storybook/preview.ts` - プレビュー設定（CSS読み込みなど）
+
+各コンポーネントのストーリーファイルは `*.stories.ts` という名前で、対応するコンポーネントと同じディレクトリに配置されています。
