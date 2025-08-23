@@ -5,7 +5,7 @@ import DocumentSvg from "@/components/svgs/DocumentSvg.vue";
 import BaseCard from "@/components/cards/BaseCard.vue";
 import CountChip from "@/components/chips/CountChip.vue";
 import DeleteButton from "@/components/buttons/DeleteButton.vue";
-import { fetchMemos } from "@/features/memos/apis/MemoRepository";
+import { deleteMemo, fetchMemos } from "@/features/memos/apis/MemoRepository";
 import { useFormatter } from "@/utils/formatter.ts";
 import { useMemosStore } from "@/features/memos/stores/memosStore.ts";
 
@@ -16,9 +16,8 @@ const loadMemos = async () => {
   await fetchMemos();
 };
 
-const handleDelete = (memoId: number) => {
-  // TODO: 削除API呼び出し処理を追加
-  console.log("削除対象メモID:", memoId);
+const handleDelete = async (memoId: number) => {
+  await deleteMemo(memoId);
 };
 
 onMounted(() => {
