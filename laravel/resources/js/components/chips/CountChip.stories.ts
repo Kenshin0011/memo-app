@@ -7,7 +7,6 @@ const meta: Meta<typeof CountChip> = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
   argTypes: {
     count: {
       control: { type: "number" },
@@ -18,6 +17,9 @@ const meta: Meta<typeof CountChip> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/**
+ * 数を表示するシンプルなチップコンポーネント
+ */
 export const Simple: Story = {
   args: {
     count: 0,

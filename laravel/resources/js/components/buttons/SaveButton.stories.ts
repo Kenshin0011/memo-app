@@ -8,7 +8,6 @@ const meta: Meta<typeof SaveButton> = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
   argTypes: {
     text: { control: "text" },
     disabled: { control: "boolean" },
@@ -23,6 +22,9 @@ const meta: Meta<typeof SaveButton> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/**
+ * 保存アクションを示すボタンコンポーネント
+ */
 export const Default: Story = {
   args: {
     text: "メモを保存",
@@ -42,6 +44,9 @@ export const Default: Story = {
   }),
 };
 
+/**
+ * 無効化された保存ボタン
+ */
 export const Disabled: Story = {
   args: {
     text: "保存",
@@ -61,6 +66,9 @@ export const Disabled: Story = {
   }),
 };
 
+/**
+ * フォームの送信ボタンとしての保存ボタン
+ */
 export const Submit: Story = {
   args: {
     text: "送信",

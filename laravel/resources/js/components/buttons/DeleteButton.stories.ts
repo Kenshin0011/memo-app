@@ -7,7 +7,6 @@ const meta: Meta<typeof DeleteButton> = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
   argTypes: {
     disabled: { control: "boolean" },
     ariaLabel: { control: "text" },
@@ -17,6 +16,9 @@ const meta: Meta<typeof DeleteButton> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/**
+ * アイテム削除を示すボタンコンポーネント
+ */
 export const Default: Story = {
   args: {
     disabled: false,
@@ -24,6 +26,9 @@ export const Default: Story = {
   },
 };
 
+/**
+ * 無効化された削除ボタン
+ */
 export const Disabled: Story = {
   args: {
     disabled: true,
@@ -31,6 +36,9 @@ export const Disabled: Story = {
   },
 };
 
+/**
+ * カスタムのaria-labelを使用した削除ボタン
+ */
 export const WithCustomLabel: Story = {
   args: {
     disabled: false,
@@ -38,6 +46,9 @@ export const WithCustomLabel: Story = {
   },
 };
 
+/**
+ * グループホバーで表示される削除ボタンの例
+ */
 export const InGroupHover: Story = {
   args: {
     disabled: false,

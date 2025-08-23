@@ -7,7 +7,6 @@ const meta: Meta<typeof BaseCard> = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
   argTypes: {
     variant: {
       control: "select",
@@ -19,6 +18,9 @@ const meta: Meta<typeof BaseCard> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/**
+ * 目立つスタイルのカードコンポーネント
+ */
 export const Default: Story = {
   args: {
     variant: "prominent",
@@ -37,6 +39,9 @@ export const Default: Story = {
   }),
 };
 
+/**
+ * 薄いスタイルのカードコンポーネント
+ */
 export const Subtle: Story = {
   args: {
     variant: "subtle",
@@ -55,6 +60,9 @@ export const Subtle: Story = {
   }),
 };
 
+/**
+ * 長いコンテンツを含むカードコンポーネント
+ */
 export const WithLongContent: Story = {
   args: {
     variant: "prominent",
