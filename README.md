@@ -1,6 +1,10 @@
-# 🎓 Intern Laravel Vue Practice
+# memo-app
 
-このリポジトリは Laravel + Vue 3 + Vite + Tailwind CSS を Docker 開発環境で構築し、モダンなフロントエンドとバックエンドを統合的に学習・開発できる練習プロジェクトです。
+かんたんにメモを追加・削除できるアプリです。デザインはClaudeが作成したもので、このリポジトリは初心者がVue ✖️ Laravelを学ぶための解答コードの例です。
+
+https://github.com/user-attachments/assets/5a14d5b4-c7c0-4e9c-ba21-bb8859b668ba
+
+
 
 ---
 
