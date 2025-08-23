@@ -1,4 +1,10 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
+
+declare global {
+  interface Window {
+    axios: AxiosInstance;
+  }
+}
 
 window.axios = axios;
 
