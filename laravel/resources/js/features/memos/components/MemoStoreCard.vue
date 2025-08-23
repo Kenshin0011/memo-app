@@ -6,22 +6,28 @@ import PlusSvg from "@/components/svgs/PlusSvg.vue";
 import TextareaForm from "@/components/forms/TextareaForm.vue";
 import SaveButton from "@/components/buttons/SaveButton.vue";
 import { createMemo } from "@/features/memos/apis/MemoRepository";
+import { createShortcutHandler } from "@/utils/keyboardShortcuts";
 
 const memo = ref<string>("");
 
-const handleSave = async () => {
+const handleSubmit = async (event: Event) => {
+  event.preventDefault();
   if (!memo.value || memo.value.length === 0) return;
   const res = await createMemo({ description: memo.value });
-  if (res) {
+  if (res.success) {
     memo.value = "";
   }
 };
+
+const handleKeydown = createShortcutHandler(() => {
+  handleSubmit(new Event("submit"));
+});
 </script>
 
 <template>
   <BaseCard>
     <SvgTextHeading :icon="PlusSvg" text="新しいメモ" class="mb-4" />
-    <div class="space-y-4">
+    <form @submit="handleSubmit" class="space-y-4">
       <div>
         <TextareaForm
           id="memo-input"
@@ -30,6 +36,7 @@ const handleSave = async () => {
           aria-label="新しいメモの内容"
           :placeholder="`メモを入力してください...\n（Enterで保存、Shift+Enterで改行）`"
           :rows="4"
+          @keydown="handleKeydown"
         />
         <div id="memo-input-description" class="sr-only">
           メモを入力してから保存ボタンを押してください。Enterキーで保存、Shift+Enterで改行できます。
@@ -42,10 +49,10 @@ const handleSave = async () => {
         "
         :disabled="memo.length === 0"
         text="メモを保存"
-        @click="handleSave"
+        type="submit"
       >
         <PlusSvg color="white" />
       </SaveButton>
-    </div>
+    </form>
   </BaseCard>
 </template>
