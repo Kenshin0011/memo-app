@@ -3,6 +3,6 @@ export type CreateMemoPayload = {
 };
 
 export type Memo = {
-  description: string;
   createdAt: string;
+  description: string;
 };

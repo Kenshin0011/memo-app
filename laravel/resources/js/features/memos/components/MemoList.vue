@@ -7,16 +7,16 @@ import { Memo } from "@/features/memos/types/memoTypes";
 
 const memos = ref<Memo[]>([
   {
-    description: "Vue.jsの基本構文を復習する",
     createdAt: "2024-07-30 10:30",
+    description: "Vue.jsの基本構文を復習する",
   },
   {
-    description: "Reactiveの使い方を理解する",
     createdAt: "2024-07-30 11:15",
+    description: "Reactiveの使い方を理解する",
   },
   {
-    description: "TypeScriptの型定義について学ぶ",
     createdAt: "2024-07-30 14:20",
+    description: "TypeScriptの型定義について学ぶ",
   },
 ]);
 </script>
