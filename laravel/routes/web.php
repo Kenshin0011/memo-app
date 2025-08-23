@@ -12,6 +12,7 @@ Route::prefix('api')
         Route::prefix('memos')
             ->as('memos.')
             ->group(function () {
+                Route::get('', \App\Http\Controllers\Memos\ListController::class)->name('list');
                 Route::post('', \App\Http\Controllers\Memos\CreateController::class)->name('create');
             });
     });
