@@ -3,6 +3,7 @@ import { ref } from "vue";
 import SvgTextHeading from "@/components/texts/SvgTextHeading.vue";
 import DocumentSvg from "@/components/svgs/DocumentSvg.vue";
 import BaseCard from "@/components/cards/BaseCard.vue";
+import CountChip from "@/components/chips/CountChip.vue";
 import { Memo } from "@/features/memos/types/memoTypes";
 
 const memos = ref<Memo[]>([
@@ -23,7 +24,10 @@ const memos = ref<Memo[]>([
 
 <template>
   <section class="space-y-4">
-    <SvgTextHeading :icon="DocumentSvg" text="保存されたメモ" />
+    <div class="flex items-center justify-between">
+      <SvgTextHeading :icon="DocumentSvg" text="保存されたメモ" />
+      <CountChip :count="memos.length" />
+    </div>
     <BaseCard v-for="(memo, index) in memos" :key="index" variant="subtle">
       <div class="flex-1">
         <p class="text-gray-800 leading-relaxed whitespace-pre-wrap">{{ memo.description }}</p>
