@@ -16,7 +16,7 @@ use Illuminate\Http\JsonResponse;
 class ListController extends Controller
 {
     /**
-     * メモを作成する
+     * メモを一覧取得する
      * @param ListUseCase $useCase
      * @return JsonResponse
      * @throws \Throwable
