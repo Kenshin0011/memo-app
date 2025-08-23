@@ -11,7 +11,10 @@ const memo = ref<string>("");
 
 const handleSave = async () => {
   if (!memo.value || memo.value.length === 0) return;
-  await createMemo({ description: memo.value });
+  const res = await createMemo({ description: memo.value });
+  if (res) {
+    memo.value = "";
+  }
 };
 </script>
 
