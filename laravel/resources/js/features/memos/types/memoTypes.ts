@@ -5,4 +5,5 @@ export type CreateMemoPayload = {
 export type Memo = {
   createdAt: string;
   description: string;
+  id: number;
 };
