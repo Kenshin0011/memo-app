@@ -4,6 +4,7 @@ type Props = {
   ariaLabel?: string;
   disabled?: boolean;
   text?: string;
+  type?: "button" | "submit" | "reset";
 };
 
 const { disabled = false, text = "保存" } = defineProps<Props>();
@@ -19,7 +20,7 @@ const { disabled = false, text = "保存" } = defineProps<Props>();
     :disabled="disabled"
     :aria-label="ariaLabel || (disabled ? `${text}できません（入力が必要です）` : text)"
     :aria-describedby="ariaDescribedBy"
-    type="button"
+    :type="type"
     role="button"
   >
     <slot />

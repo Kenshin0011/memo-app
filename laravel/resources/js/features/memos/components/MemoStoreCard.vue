@@ -9,10 +9,11 @@ import { createMemo } from "@/features/memos/apis/MemoRepository";
 
 const memo = ref<string>("");
 
-const handleSave = async () => {
+const handleSubmit = async (event: Event) => {
+  event.preventDefault();
   if (!memo.value || memo.value.length === 0) return;
   const res = await createMemo({ description: memo.value });
-  if (res) {
+  if (res.success) {
     memo.value = "";
   }
 };
@@ -21,7 +22,7 @@ const handleSave = async () => {
 <template>
   <BaseCard>
     <SvgTextHeading :icon="PlusSvg" text="新しいメモ" class="mb-4" />
-    <div class="space-y-4">
+    <form @submit="handleSubmit" class="space-y-4">
       <div>
         <TextareaForm
           id="memo-input"
@@ -42,10 +43,10 @@ const handleSave = async () => {
         "
         :disabled="memo.length === 0"
         text="メモを保存"
-        @click="handleSave"
+        type="submit"
       >
         <PlusSvg color="white" />
       </SaveButton>
-    </div>
+    </form>
   </BaseCard>
 </template>
