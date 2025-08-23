@@ -1,24 +1,17 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import api from "../../../bootstrap";
 import BaseCard from "../../../components/cards/BaseCard.vue";
 import SvgTextHeading from "../../../components/texts/SvgTextHeading.vue";
 import PlusSvg from "../../../components/svgs/PlusSvg.vue";
 import TextareaForm from "../../../components/forms/TextareaForm.vue";
 import SaveButton from "../../../components/buttons/SaveButton.vue";
+import { createMemo } from "../apis/MemoRepository";
 
-const memo = ref("");
+const memo = ref<string>("");
 
 const handleSave = async () => {
-  if (memo.value.trim() === "") return;
-
-  try {
-    await api.post("/memos", {
-      description: memo.value,
-    });
-  } catch (error) {
-    console.error("メモの保存中にエラーが発生しました:", error);
-  }
+  if (!memo.value || memo.value.length === 0) return;
+  await createMemo({ description: memo.value });
 };
 </script>
 
