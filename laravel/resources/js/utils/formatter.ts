@@ -15,7 +15,7 @@ export const useFormatter = () => {
 
     return `${year}-${month}-${day} ${hours}:${minutes}`;
   };
-  
+
   return {
     formatDateTime,
   };

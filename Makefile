@@ -15,6 +15,7 @@ up:
 ## コンテナ停止
 down:
 	docker compose down
+	make storybook-down
 
 stop:
 	docker compose stop
@@ -63,8 +64,8 @@ destroy:
 
 ## Storybookのみ起動
 storybook:
-	docker compose -f docker-compose.dev.yml up -d storybook
+	docker compose -f docker-compose.dev.yml --profile adhoc up -d storybook
 
 ## Storybook停止
 storybook-down:
-	docker compose -f docker-compose.dev.yml down
+	docker compose -f docker-compose.dev.yml --profile adhoc down

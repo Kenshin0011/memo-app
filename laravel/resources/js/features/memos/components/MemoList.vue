@@ -38,6 +38,7 @@ onMounted(() => {
           <p class="text-xs text-gray-400 mt-3">{{ formatDateTime(memo.createdAt) }}</p>
         </div>
         <DeleteButton
+          class="opacity-0 group-hover:opacity-100"
           :aria-label="`メモ「${memo.description.slice(0, 20)}...」を削除`"
           @click="handleDelete(memo.id)"
         />
