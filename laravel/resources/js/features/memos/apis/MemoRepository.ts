@@ -27,7 +27,21 @@ export const createMemo = async (payload: CreateMemoPayload) => {
   try {
     const { data } = await api.post(BASE_URL, payload);
     memosStore.addMemo(data.data);
-    return { success: true, message: data.message };
+    return { success: true, message: "メモを作成しました。" };
+  } catch (error) {
+    return { success: false, error };
+  }
+};
+
+/**
+ * メモ削除する
+ * @param id メモID
+ */
+export const deleteMemo = async (id: number) => {
+  try {
+    await api.delete(`${BASE_URL}/${id}`);
+    memosStore.removeMemo(id);
+    return { success: true, message: "メモを削除しました。" };
   } catch (error) {
     return { success: false, error };
   }

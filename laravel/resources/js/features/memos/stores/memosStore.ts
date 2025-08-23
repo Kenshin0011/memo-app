@@ -12,6 +12,9 @@ export const useMemosStore = defineStore("memos", {
     addMemo(memo: Memo) {
       this.memos.unshift(memo);
     },
+    removeMemo(id: number) {
+      this.memos = this.memos.filter((memo) => memo.id !== id);
+    },
     store(memos: Memo[]) {
       this.memos = memos;
     },
