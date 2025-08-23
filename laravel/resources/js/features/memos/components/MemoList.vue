@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import SvgTextHeading from "../../../components/texts/SvgTextHeading.vue";
-import DocumentSvg from "../../../components/svgs/DocumentSvg.vue";
+import SvgTextHeading from "@/components/texts/SvgTextHeading.vue";
+import DocumentSvg from "@/components/svgs/DocumentSvg.vue";
 </script>
 
 <template>

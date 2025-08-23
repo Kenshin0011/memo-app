@@ -1,5 +1,5 @@
-import api from "../../../bootstrap";
-import { CreateMemoPayload } from "../types/memoTypes";
+import api from "@/bootstrap";
+import { CreateMemoPayload } from "@/features/memos/types/memoTypes";
 
 const BASE_URL = "/memos";
 
