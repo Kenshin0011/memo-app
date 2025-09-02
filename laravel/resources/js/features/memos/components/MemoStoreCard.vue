@@ -10,8 +10,7 @@ import { createShortcutHandler } from "@/utils/keyboardShortcuts";
 
 const memo = ref<string>("");
 
-const handleSubmit = async (event: Event) => {
-  event.preventDefault();
+const handleSubmit = async () => {
   if (!memo.value || memo.value.length === 0) return;
   const res = await createMemo({ description: memo.value });
   if (res.success) {
@@ -20,14 +19,14 @@ const handleSubmit = async (event: Event) => {
 };
 
 const handleKeydown = createShortcutHandler(() => {
-  handleSubmit(new Event("submit"));
+  handleSubmit();
 });
 </script>
 
 <template>
   <BaseCard>
     <SvgTextHeading :icon="PlusSvg" text="新しいメモ" class="mb-4" />
-    <form @submit="handleSubmit" class="space-y-4">
+    <form @submit.prevent="handleSubmit" class="space-y-4">
       <div>
         <TextareaForm
           id="memo-input"
