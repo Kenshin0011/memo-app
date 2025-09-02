@@ -10,6 +10,9 @@ import { createShortcutHandler } from "@/utils/keyboardShortcuts";
 
 const memo = ref<string>("");
 
+/**
+ * メモの保存
+ */
 const handleSubmit = async () => {
   if (!memo.value || memo.value.length === 0) return;
   const res = await createMemo({ description: memo.value });
@@ -18,6 +21,9 @@ const handleSubmit = async () => {
   }
 };
 
+/**
+ * Enterキーで送信、Shift+Enterで改行
+ */
 const handleKeydown = createShortcutHandler(() => {
   handleSubmit();
 });

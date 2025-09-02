@@ -12,10 +12,17 @@ import { useMemosStore } from "@/features/memos/stores/memosStore.ts";
 const memosStore = useMemosStore();
 const { formatDateTime } = useFormatter();
 
+/**
+ * メモの読み込み
+ */
 const loadMemos = async () => {
   await fetchMemos();
 };
 
+/**
+ * メモの削除
+ * @param memoId メモID
+ */
 const handleDelete = async (memoId: number) => {
   await deleteMemo(memoId);
 };
