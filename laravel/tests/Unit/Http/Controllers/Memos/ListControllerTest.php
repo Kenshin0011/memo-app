@@ -13,10 +13,13 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\PreserveGlobalState;
 use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 use Tests\TestCase;
+use Tests\Unit\Traits\MockEloquentModel;
 
 #[CoversClass(ListController::class)]
 class ListControllerTest extends TestCase
 {
+    use MockEloquentModel;
+
     /**
      * @return void
      * @throws \Throwable
@@ -25,16 +28,11 @@ class ListControllerTest extends TestCase
     #[PreserveGlobalState(false)]
     public function testNormal(): void
     {
-        $memoMock = Mockery::mock(Memo::class);
-        $memoMock->shouldReceive('getAttribute')
-            ->andReturnUsing(function ($key) {
-                return match ($key) {
-                    'id' => 1,
-                    'description' => 'Test memo',
-                    'created_at' => now(),
-                    default => null,
-                };
-            });
+        $memoMock = $this->createModelMock(Memo::class, [
+            'id' => 1,
+            'description' => 'Test memo',
+            'created_at' => now(),
+        ]);
 
         $outputData = ['memos' => [$memoMock]];
 
