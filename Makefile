@@ -69,3 +69,6 @@ storybook:
 ## Storybook停止
 storybook-down:
 	docker compose -f docker-compose.dev.yml --profile adhoc down
+
+route:
+	docker compose exec app php artisan route:list
