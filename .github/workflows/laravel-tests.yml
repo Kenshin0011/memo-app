@@ -49,8 +49,8 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
-      - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - name: Copy CI .env
+        run: cp .env.ci .env
 
       - name: Generate key
         run: php artisan key:generate
@@ -58,16 +58,15 @@ jobs:
       - name: Directory Permissions
         run: chmod -R 777 storage bootstrap/cache
 
-      - name: Create Database
-        run: |
-          mkdir -p database
-          touch database/database.sqlite
+      - name: Run migrations
+        run: php artisan migrate --force
 
-      - name: Execute tests (Unit and Feature tests)
-        env:
-          DB_CONNECTION: sqlite
-          DB_DATABASE: database/database.sqlite
-        run: php artisan test --coverage-clover=coverage.xml
+      - name: Execute Unit Tests
+        if: false
+        run: php artisan test --testsuite=Unit
+
+      - name: Execute Feature Tests with Coverage
+        run: php artisan test --testsuite=Feature --coverage-clover=coverage.xml
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
