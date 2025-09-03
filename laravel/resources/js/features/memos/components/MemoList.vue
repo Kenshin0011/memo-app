@@ -5,7 +5,7 @@ import DocumentSvg from "@/components/svgs/DocumentSvg.vue";
 import BaseCard from "@/components/cards/BaseCard.vue";
 import CountChip from "@/components/chips/CountChip.vue";
 import DeleteButton from "@/components/buttons/DeleteButton.vue";
-import { deleteMemo, fetchMemos } from "@/features/memos/apis/MemoRepository";
+import { deleteMemo, fetchMemos } from "@/features/memos/apis/memoRepository.ts";
 import { useFormatter } from "@/utils/formatter.ts";
 import { useMemosStore } from "@/features/memos/stores/memosStore.ts";
 

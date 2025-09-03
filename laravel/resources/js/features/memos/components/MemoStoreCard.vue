@@ -5,7 +5,7 @@ import SvgTextHeading from "@/components/texts/SvgTextHeading.vue";
 import PlusSvg from "@/components/svgs/PlusSvg.vue";
 import TextareaForm from "@/components/forms/TextareaForm.vue";
 import SaveButton from "@/components/buttons/SaveButton.vue";
-import { createMemo } from "@/features/memos/apis/MemoRepository";
+import { createMemo } from "@/features/memos/apis/memoRepository.ts";
 import { createShortcutHandler } from "@/utils/keyboardShortcuts";
 
 const memo = ref<string>("");
