@@ -1,4 +1,4 @@
-.PHONY: up down stop clear init reset destroy app-create front-create storybook storybook-down
+.PHONY: up down stop clear init reset destroy app-create front-create storybook storybook-down test test-unit test-feature test-coverage
 
 ## Laravelキャッシュ系
 clear:
@@ -72,3 +72,33 @@ storybook-down:
 
 route:
 	docker compose exec app php artisan route:list
+
+## テスト関連
+test:
+	docker compose exec app php artisan test
+
+test-unit:
+	docker compose exec app php artisan test --testsuite=Unit
+
+test-feature:
+	docker compose exec app php artisan test --testsuite=Feature
+
+test-coverage:
+	docker compose exec app vendor/bin/phpunit --coverage-html coverage
+
+## API curl コマンド
+# Usage: make curl METHOD=GET ENDPOINT=/api/memos
+# Usage: make curl METHOD=POST ENDPOINT=/api/memos DATA='{"description":"test"}'
+# Usage: make curl METHOD=DELETE ENDPOINT=/api/memos/1
+curl:
+	@if [ -z "$(METHOD)" ] || [ -z "$(ENDPOINT)" ]; then \
+		echo "Usage: make curl METHOD=<GET|POST|PUT|DELETE> ENDPOINT=</path> [DATA=<json>]"; \
+		exit 1; \
+	fi
+	@if [ -n "$(DATA)" ]; then \
+		curl -X $(METHOD) http://localhost:48080$(ENDPOINT) \
+			-H "Content-Type: application/json" \
+			-d '$(DATA)'; \
+	else \
+		curl -X $(METHOD) http://localhost:48080$(ENDPOINT); \
+	fi
