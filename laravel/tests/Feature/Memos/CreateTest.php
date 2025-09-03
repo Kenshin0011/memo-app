@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Feature\Memos;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 /**
@@ -45,10 +46,10 @@ class CreateTest extends TestCase
     }
 
     /**
-     * @dataProvider validationErrorProvider
      * @param array $data
      * @return void
      */
+    #[DataProvider('validationErrorProvider')]
     public function testValidationError(array $data): void
     {
         $response = $this->postJson(route($this->getRouteName()), $data);

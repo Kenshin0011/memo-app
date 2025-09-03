@@ -6,6 +6,7 @@ namespace Tests\Feature\Memos;
 
 use App\Models\Memo;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 /**
@@ -40,10 +41,10 @@ class DeleteTest extends TestCase
     }
 
     /**
-     * @dataProvider validationErrorProvider
      * @param mixed $id
      * @return void
      */
+    #[DataProvider('validationErrorProvider')]
     public function testValidationError(mixed $id): void
     {
         $response = $this->deleteJson(route($this->getRouteName(), ['id' => $id]));
@@ -62,10 +63,10 @@ class DeleteTest extends TestCase
     }
 
     /**
-     * @dataProvider notFoundProvider
      * @param mixed $id
      * @return void
      */
+    #[DataProvider('notFoundProvider')]
     public function testNotFound(mixed $id): void
     {
         $response = $this->deleteJson(route($this->getRouteName(), ['id' => $id]));
