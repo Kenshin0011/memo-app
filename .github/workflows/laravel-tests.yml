@@ -62,7 +62,6 @@ jobs:
         run: php artisan migrate --force
 
       - name: Execute Unit Tests
-        if: false
         run: php artisan test --testsuite=Unit
 
       - name: Execute Feature Tests with Coverage
