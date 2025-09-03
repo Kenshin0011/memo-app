@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Memos;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Memos\DeleteRequest;
 use App\Services\UseCases\Memos\DeleteUseCase;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 
 /**
@@ -29,8 +30,12 @@ class DeleteController extends Controller
     {
         try {
             $useCase($request->validated());
-
             return response()->json([], 204);
+        } catch (ModelNotFoundException $e) {
+            return response()->json([
+                'error' => 'Not Found',
+                'message' => 'メモが見つかりません'
+            ], 404);
         } catch (\Exception $e) {
             return response()->json([
                 'error' => '予期しないエラー',
