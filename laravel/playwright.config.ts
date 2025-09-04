@@ -26,11 +26,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.BASE_URL
-      ? process.env.BASE_URL
-      : process.env.CI
-        ? "http://web"
-        : "http://localhost:48080",
+    baseURL: process.env.CI ? "http://localhost:8000" : "http://localhost:48080",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: process.env.CI ? "off" : "on",
@@ -79,9 +75,11 @@ export default defineConfig({
   ],
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   url: 'http://localhost:3000',
-  //   reuseExistingServer: !process.env.CI,
-  // },
+  webServer: process.env.CI
+    ? {
+        command: "php artisan serve --host=0.0.0.0 --port=8000 --env=testing",
+        url: "http://localhost:8000",
+        reuseExistingServer: false,
+      }
+    : undefined,
 });
