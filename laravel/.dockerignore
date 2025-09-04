@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log*
+.npm
+.env
+.env.local
+.env.*.local
+dist
+build
+coverage
+.nyc_output
+playwright-report
+test-results
+.DS_Store
+Thumbs.db
