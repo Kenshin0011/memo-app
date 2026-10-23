@@ -45,12 +45,12 @@ app-create:
 
 ## Vueフロントエンド初期導入
 front-create:
-	docker compose exec vite npm install -D @vitejs/plugin-vue
-	docker compose exec vite npm install -D vue-router@4
-	docker compose exec vite npm install -D pinia
-	docker compose exec vite npm install -D sass
-	docker compose exec vite npm install -D unplugin-vue-router
-	docker compose exec vite npm install --save-dev laravel-vite-plugin
+	docker compose exec vite pnpm add -D @vitejs/plugin-vue
+	docker compose exec vite pnpm add -D vue-router@4
+	docker compose exec vite pnpm add -D pinia
+	docker compose exec vite pnpm add -D sass
+	docker compose exec vite pnpm add -D unplugin-vue-router
+	docker compose exec vite pnpm add -D laravel-vite-plugin
 
 ## 開発用アセット・不要ファイルを完全削除
 destroy:

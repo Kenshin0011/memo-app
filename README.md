@@ -16,7 +16,8 @@ https://github.com/user-attachments/assets/5a14d5b4-c7c0-4e9c-ba21-bb8859b668ba
 * Tailwind CSS v3
 * Pinia
 * TypeScript
-* Storybook 9.x
+* Storybook 10.x
+* pnpm 10.x
 * Docker / Docker Compose
 
 ---
@@ -64,6 +65,15 @@ make init
 * `.env` のコピー（存在しない場合）
 * Docker イメージビルド
 * Laravel セットアップ（`composer install`, `key:generate`, `migrate --seed`）
+
+フロントエンドの依存関係は pnpm で管理しています。ローカルで実行する場合は、Node.js 24.22.1以上25未満を使用してください。
+
+```bash
+cd laravel
+corepack enable
+pnpm install --frozen-lockfile
+pnpm run dev
+```
 
 ---
 
@@ -145,13 +155,17 @@ laravel/
 
 ## 📖 Storybook
 
-このプロジェクトでは、UIコンポーネントの開発・テスト・ドキュメント化にStorybook 9.xを使用しています。
+このプロジェクトでは、UIコンポーネントの開発・テスト・ドキュメント化にStorybook 10.xを使用しています。
 
 ### 🚀 Storybookの起動
 
 ```bash
 # Dockerを使用
 make storybook
+
+# ローカルで実行
+cd laravel
+pnpm run storybook
 ```
 
 ### 📚 Storybookの設定

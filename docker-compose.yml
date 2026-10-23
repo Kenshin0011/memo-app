@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: ./infra/development/vite/Dockerfile
-    command: sh -c "npm ci && npm run dev"
+    command: sh -c "pnpm install --frozen-lockfile && pnpm run dev"
     volumes:
       - type: bind
         source: ./laravel
