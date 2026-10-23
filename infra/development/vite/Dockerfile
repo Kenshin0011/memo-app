@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:24.22.1
 
 COPY ./laravel /var/www/html
 
