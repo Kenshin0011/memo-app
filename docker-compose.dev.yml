@@ -2,7 +2,7 @@ services:
   storybook:
     image: node:24.22.1
     working_dir: /var/www/html
-    command: sh -c 'npm i && npm run storybook -- --host 0.0.0.0'
+    command: sh -c 'corepack enable && pnpm install --frozen-lockfile && pnpm run storybook -- --host 0.0.0.0'
     volumes:
       - ./laravel:/var/www/html
     ports:

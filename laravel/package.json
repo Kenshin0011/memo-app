@@ -1,6 +1,7 @@
 {
     "name": "memo-app",
     "$schema": "https://json.schemastore.org/package.json",
+    "packageManager": "pnpm@10.12.4",
     "private": true,
     "type": "module",
     "engines": {
